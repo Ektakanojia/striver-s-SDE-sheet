@@ -1,0 +1,17 @@
+#include <bits/stdc++.h> 
+vector<vector<long long int>> printPascal(int n) 
+{
+  // Write your code here.
+    vector<vector<long long int>>ans(n);
+    for(int i=0;i<n;i++){
+       //we will resize the matrix at every row,as we observerif we are at 0th rwo we have 1 col,if we are at 1st row we have 2 col and so on.
+       ans[i].resize(i+1);
+       //for intializtion as we observe that at every first col and last col we have value=1;
+       ans[i][0]=ans[i][i]=1;
+       //itrating the row 
+        for(int j=1;j<i;j++)
+        // formula for calculating the value at ith row and jth col.
+            ans[i][j]=ans[i-1][j-1]+ans[i-1][j];
+        }
+      return ans;
+}
