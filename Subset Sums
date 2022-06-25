@@ -1,0 +1,23 @@
+//We have two option for every element we can either pick it or we can not pick it.if we are picking up the element we move to the next index and sum will be incremented,if we are not picking index will be incremented but remains same . 
+class Solution
+{
+public:
+ void recursive_function(int ind,int sum,vector<int>&arr,int N,vector<int>&ans){
+     if(ind==N)
+     ans.push_back(sum);
+     return;
+     //pick the element
+     recursive_function(ind+1,arr[ind]+sum,arr,N,ans);
+     //Not pick the element
+     recursive_function(ind+1,sum,arr,N,ans);
+ }
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        // Write Your Code here
+        //data structure to store the sum 
+        vector<int>ans;
+        recursive_function(0,0,arr,N,ans);
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
+}
